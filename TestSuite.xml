@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Automaiton Rokomari">
+	<test name="OrderBook">
+		<classes>
+					<class name="tests.HomeTest" />
+					<class name="tests.LoginTest" />
+					<class name="tests.AuthorTest" />
+					<class name="tests.BookTest" />
+					<class name="tests.CartTest" />
+					<class name="tests.ShippingTest" />
+					
+<!--		<methods>
+			<include name="authorTest"> </include>
+			</methods>
+			-->
+</classes>
+	</test>
+</suite>

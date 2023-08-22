@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Automaiton Rokomari]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="OrderBook(failed)">
+    <classes>
+      <class name="tests.BookTest">
+        <methods>
+          <include name="bookTest"/>
+          <include name="pushReport"/>
+          <include name="close"/>
+          <include name="start"/>
+        </methods>
+      </class> <!-- tests.BookTest -->
+      <class name="tests.ShippingTest">
+        <methods>
+          <include name="bookTest"/>
+          <include name="pushReport"/>
+          <include name="close"/>
+          <include name="start"/>
+        </methods>
+      </class> <!-- tests.ShippingTest -->
+      <class name="tests.CartTest">
+        <methods>
+          <include name="close"/>
+          <include name="start"/>
+          <include name="bookTest"/>
+          <include name="pushReport"/>
+        </methods>
+      </class> <!-- tests.CartTest -->
+    </classes>
+  </test> <!-- OrderBook(failed) -->
+</suite> <!-- Failed suite [Automaiton Rokomari] -->
