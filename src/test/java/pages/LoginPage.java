@@ -38,7 +38,7 @@ public class LoginPage extends CommonMethods{
 		{
 			if(phone.isDisplayed())
 			{
-				phone.sendKeys("0161*******");
+				phone.sendKeys("01614735074");
 				sleep(3000);
 				test.pass("<p style=\"color:#29a329; font-size:14px\"><b>Successfully input Phone Number.</b></p>");
 				@SuppressWarnings("unused")

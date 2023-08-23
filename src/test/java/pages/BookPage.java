@@ -45,15 +45,15 @@ public class BookPage extends CommonMethods{
 	WebElement categoryText;
 	
 	@FindBys({
-		@FindBy(xpath="//body/div[8]/div[1]/div[1]/div[1]/section[2]/div[2]/div[1]/div[1]/div[1]"),
-		@FindBy(xpath="//h4[contains(text(),'সাতকাহন')]")	
+		@FindBy(xpath="//body/div[8]/div[1]/div[1]/div[1]/section[2]/div[2]/div[1]/div[4]/div[1]"),	
 	})
+	WebElement uttoradhikar;
 	
-	WebElement satkahon;
 	@FindBys({
-	@FindBy(xpath="//body/div[8]/div[1]/div[1]/div[1]/section[2]/div[2]/div[1]/div[1]/div[1]/a[1]/div[1]/div[2]/button[1]")
+	@FindBy(xpath="//body/div[8]/div[1]/div[1]/div[1]/section[2]/div[2]/div[1]/div[4]/div[1]/a[1]/div[1]/div[2]/button[1]")
 	})
 	WebElement addtoCart;
+	
 	
 	//------------------------------->>> Methods <<<---------------------------------------
 //~~~~~~~~~~~~~~~~~~filterCategory~~~~~~~~~~~~~~~~~~~~~~~
@@ -102,12 +102,13 @@ public class BookPage extends CommonMethods{
 	}
 	
 	//~~~~~~~~~~~~~~~~~~ScrollPage~~~~~~~~~~~~~~~~~~~~~~~
-		public void scrollPage() throws IOException
+		public void scrollDown() throws IOException
 		{
 			try {
 	
 					JavascriptExecutor js = (JavascriptExecutor) pageDriver.getCurrentDriver();
-					js.executeScript("window.scrollTo(0,4000)");
+					//js.executeScript("window.scrollTo(0,4000)");
+					js.executeScript("window.scrollBy(0,4000)", "");
 					sleep(3000);	
 					test.pass("<p style=\"color:#29a329; font-size:14px\"><b>Successfully Scroll Down.</b></p>");
 					@SuppressWarnings("unused")
@@ -123,6 +124,33 @@ public class BookPage extends CommonMethods{
 				@SuppressWarnings("unused")
 				String screenshotPath = getScreenshot.capture(pageDriver.getCurrentDriver(), "ScrollDown");
 				String dest = System.getProperty("user.dir") + "\\screenshots\\" + "ScrollDown.png";
+				test.fail(MediaEntityBuilder.createScreenCaptureFromPath(dest).build());
+				pageDriver.getCurrentDriver().quit();
+				}
+		}
+		
+		
+		public void scrollUp() throws IOException
+		{
+			try {
+	
+					JavascriptExecutor js = (JavascriptExecutor) pageDriver.getCurrentDriver();
+					js.executeScript("window.scrollBy(0,-3600)", "");
+					sleep(3000);	
+					test.pass("<p style=\"color:#29a329; font-size:14px\"><b>Successfully Scroll Up.</b></p>");
+					@SuppressWarnings("unused")
+					String screenshotPath = getScreenshot.capture(pageDriver.getCurrentDriver(), "ScrollUpPass");
+					String dest = System.getProperty("user.dir") + "\\screenshots\\" + "ScrollUpPass.png";
+					test.pass(MediaEntityBuilder.createScreenCaptureFromPath(dest).build());
+				} 
+			catch (Exception e)
+				{
+				test.fail("<p style=\"color:#ff3300; font-size:14px\"><b>Scroll Up Failed. </b></p>");
+				Throwable t = new InterruptedException("Exception");
+				test.fail(t);
+				@SuppressWarnings("unused")
+				String screenshotPath = getScreenshot.capture(pageDriver.getCurrentDriver(), "ScrollUp");
+				String dest = System.getProperty("user.dir") + "\\screenshots\\" + "ScrollUp.png";
 				test.fail(MediaEntityBuilder.createScreenCaptureFromPath(dest).build());
 				pageDriver.getCurrentDriver().quit();
 				}
@@ -159,11 +187,8 @@ public class BookPage extends CommonMethods{
 		//~~~~~~~~~~~~~~~~~~Go to Previuos Page~~~~~~~~~~~~~~~~~~~~~~~
 		public void previousPage() throws IOException
 		{
-			try {	JavascriptExecutor js =(JavascriptExecutor) pageDriver.getCurrentDriver();
+			try {	
 					pageDriver.getCurrentDriver().navigate().back();
-					sleep(3000);
-					//js.executeScript("window.scrollBy(0,-3500)", "");
-					js.executeScript("window.scrollBy(0,-3600)");
 					sleep(3000);
 					test.pass("<p style=\"color:#29a329; font-size:14px\"><b>Successfully go to Previous Page.</b></p>");
 					@SuppressWarnings("unused")
@@ -190,9 +215,9 @@ public class BookPage extends CommonMethods{
 				public void addtoCart() throws IOException
 				{
 					try {
-							if(satkahon.isDisplayed()) 
+							if(uttoradhikar.isDisplayed()) 
 							{ Actions act = new Actions(pageDriver.getCurrentDriver());
-							act.moveToElement(satkahon).perform();
+							act.moveToElement(uttoradhikar).perform();
 							sleep(2000);
 							act.moveToElement(addtoCart).perform();
 							sleep(2000);
@@ -214,7 +239,7 @@ public class BookPage extends CommonMethods{
 						String screenshotPath = getScreenshot.capture(pageDriver.getCurrentDriver(), "addcartLocator");
 						String dest = System.getProperty("user.dir") + "\\screenshots\\" + "addcartLocator.png";
 						test.fail(MediaEntityBuilder.createScreenCaptureFromPath(dest).build());
-						Assert.assertTrue(satkahon.isDisplayed());
+						Assert.assertTrue(uttoradhikar.isDisplayed());
 						pageDriver.getCurrentDriver().quit();
 					
 						}

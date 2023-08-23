@@ -25,8 +25,8 @@ public class CartPage extends CommonMethods {
 	}
 	
 	//------------------------------------------->>> Locators <<<-------------------------------------------
-	@FindBy(xpath="//body/div[@id='cart-page']/div[1]/div[1]/div[1]/section[4]/div[1]/div[1]/div[1]/div[1]/label[1]") 
-	WebElement bookchecked;
+	@FindBy(xpath="//body/div[@id='cart-page']/div[1]/div[1]/div[1]/section[3]/div[1]/div[1]/div[1]/div[1]/label[1]") 
+	WebElement checkbox;
 
 	@FindBy(xpath="//a[@id='js-continue-to-shipping']") 
 	WebElement placeOrderBtn;
@@ -39,33 +39,8 @@ public class CartPage extends CommonMethods {
 	
 	public void checkBook() throws IOException
 	{
-		/*try
-		{	if(!bookchecked.isSelected())
-				{
-				bookchecked.click();
-				sleep(3000);
-				test.pass("<p style=\"color:#29a329; font-size:14px\"><b>The book is checked.</b></p>");
-				@SuppressWarnings("unused")
-				String screenshotPath = getScreenshot.capture(pageDriver.getCurrentDriver(), "BookCheckPass");
-				String dest = System.getProperty("user.dir") + "\\screenshots\\" + "BookCheckPass.png";
-				test.pass(MediaEntityBuilder.createScreenCaptureFromPath(dest).build());
-				}
-		}
-		catch(Exception e)
-		{
-			test.fail("<p style=\"color:#ff3300; font-size:13px\"><b>BookCheck is not locateable.Please check the error message.</b></p>");
-			Throwable t = new InterruptedException("Exception");
-			test.fail(t);
-			@SuppressWarnings("unused")
-			String screenShotPath = getScreenshot.capture(pageDriver.getCurrentDriver(), "BookCheckLocator");
-			String dest = System.getProperty("user.dir") + "\\screenshots\\" + "BookCheckLocator.png";
-			test.fail(MediaEntityBuilder.createScreenCaptureFromPath(dest).build());
-			Assert.assertTrue(bookchecked.isSelected());
-			pageDriver.getCurrentDriver().quit();
-		}
-		*/
 		try
-		{			
+		{	
 				JavascriptExecutor js = (JavascriptExecutor) pageDriver.getCurrentDriver();
 				js.executeScript("window.scrollBy(0,500)");
 				sleep(3000);
@@ -119,8 +94,5 @@ public class CartPage extends CommonMethods {
 			Assert.assertTrue(placeOrderBtn.isDisplayed());
 			pageDriver.getCurrentDriver().quit();
 		}
-		
-		
-	}
-	
+	}	
 }

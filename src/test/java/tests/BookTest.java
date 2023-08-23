@@ -26,9 +26,10 @@ public class BookTest extends baseDriver{
 			childTest =parentTest.createNode("<p style=\"color:#9161AB; font-size:18px\"><b>BOOK TEST</b></p>");
 			BookPage bp = new BookPage(childTest);
 			bp.filterCategory();
-			bp.scrollPage();
+			bp.scrollDown();
 			bp.nextPage();
 			bp.previousPage();
+			bp.scrollUp();
 			bp.addtoCart();
 			bp.clickCartIcon();
 			
